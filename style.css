@@ -1,0 +1,40 @@
+.body{
+    background-color: rgb(235, 79, 79);
+}
+.map{
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 400px;
+    background-color: royalblue;
+    
+}
+.tile{
+    background-color: rgb(93, 168, 125);
+    display: flex;
+    
+}
+.tileDiv{
+    width: 40px;
+    height: 40px;
+    background-color: rgb(93, 168, 125);
+}
+.arbre{
+    background-color: blue;
+}
+.sortieOuest{
+    background-color: rgb(125, 125, 173);
+}
+.sortieEst{
+    background-color: rgb(125, 125, 173);
+}
+.player{
+    position: relative;
+    bottom: 10px;
+    left: 5px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: rgb(23, 29, 36);
+}
