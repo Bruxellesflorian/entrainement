@@ -159,10 +159,10 @@ function pointDeStart() {
 }
 
 function deplacement() {
-    document.body.addEventListener("keypress", function (e) {
-
+    document.body.addEventListener("keydown", function(e) {
+       
         if (posX <= mapX) {
-            if (e.key === "d") {
+            if (e.key === "ArrowRight") {
 
                 posX++
                 if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("arbre")) {
@@ -176,7 +176,7 @@ function deplacement() {
             }
         }
 
-        if (e.key === "q") {
+        if (e.key === "ArrowLeft") {
             if (posX >= 2) {
 
                 posX--
@@ -188,7 +188,7 @@ function deplacement() {
                 }
             }
         }
-        if (e.key === "z") {
+        if (e.key === "ArrowUp") {
             if (posY >= 2) {
                 posY--
                 if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("arbre")) {
@@ -200,7 +200,7 @@ function deplacement() {
             }
         }
 
-        if (e.key === "s") {
+        if (e.key === "ArrowDown") {
 
             if (posY < mapY - 1) {
 
