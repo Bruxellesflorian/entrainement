@@ -1,19 +1,21 @@
+html{
+    font-family: sans-serif;
+}
 .body{
     background-color: rgb(235, 79, 79);
 }
-.map{
+.fenetreDeJeu{
+    width: 400px;
+    height: 400px;
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
-    width: 400px;
-    height: 400px;
-    background-color: royalblue;
-    
+}
+.map{
+    background-color: royalblue;   
 }
 .tile{
-    
-    display: flex;
-    
+    display: flex; 
 }
 .tileDiv{
     width: 40px;
@@ -35,13 +37,24 @@
 }
 .player{
     position: relative;
-    bottom: 10px;
-    left: 5px;
+    left: 7px;
+    top: 7px;
     width: 25px;
     height: 25px;
     border-radius: 100%;
     background-color: rgb(23, 29, 36);
 }
 .sortieDepart{
-    background-color: aqua;   
+    background-image: url("./img/grassStart.png")
+}
+.timer{
+    color: white;
+    width: 400px ;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(153, 150, 145);
+    display: flex;
+    justify-content: center;
 }

@@ -12,24 +12,24 @@ aaaVaaaaaaa`,
 
     est01 = `aaaaaaaaaaa
 aaaa...a..a
-G...a.aaaa.
+a...a.aaaa.
 a...aa....a
-S..a..aa.a.
+S.....aa.a.
 aaa...a....
 ..a..aa..a.
-...a..aaaaa
+...aa.aaaaa
 a..aaaaa...
 ....a.....a`,
 
     ouest01 = `aaaaaaaaaaa
-a.aa...a..a
+a.aaaaaa..a
 ..a.......a
 a....a....a
 ...a..aa..S
 aa....a...a
 a.a..aa..aa
 a..a....aaa
-..........G
+....a.....a
 a.aa.....aa`,
     nord01 = `aaaaaaaaaaa
 a.a....a..a
@@ -41,7 +41,7 @@ a.........a
 a.a.......a
 a.........a
 aaaGaaaaSaa`,
-    sud01 = `aaaSaaaaGaa
+    sud01 = `aaaSaaaaaaa
 a..........
 a....a....a
 .a........a
