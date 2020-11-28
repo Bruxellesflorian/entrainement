@@ -1,6 +1,6 @@
 const body = document.querySelector("body")
 body.classList.add("body")
-
+const fleche = ["","url('./img/grassLeft.png')","url('./img/grassRight.png')","url('./img/grassDown.png')","url('./img/grassUp.png')"]
 const fenetreDeJeu = document.createElement("div")
 fenetreDeJeu.classList.add("fenetreDeJeu")
 body.appendChild(fenetreDeJeu)
@@ -20,6 +20,9 @@ let estPosY,estPosX
 let nordPosY,nordPosX;
 let sudPosY, sudPosX 
 
+let mapY;
+let mapX;
+
 let ouest,est,nord,sud = true;
 
 let sec = 00
@@ -35,7 +38,7 @@ setInterval(() => {
 
 
 function game() {
-
+    
     const map = document.createElement("div")
     map.classList.add("map")
     fenetreDeJeu.appendChild(map)
@@ -51,60 +54,59 @@ function game() {
 
             let tile = document.createElement("div")
             ligne.appendChild(tile)
-            // tile.innerHTML = ligneDiv[j]
+            
             if (ligneDiv[j] === "a") {
                 
                 tile.classList.add("arbre")
             } else if (ligneDiv[j] === "S") {
                 if (ouest === false) {
-                    tile.innerHTML = "."
                     tile.classList = "tileDiv";
                     posY = ouestPosY
                     posX = ouestPosX
                     ouest = true
                 } else if (est === false) {
-                    tile.innerHTML = "."
                     tile.classList = "tileDiv";
                     posY = estPosY
                     posX = estPosX
                     est = true
                 }else if (nord === false) {
-                    tile.innerHTML = "."
                     tile.classList = "tileDiv";
                     posY = nordPosY
                     posX = nordPosX
                     nord = true
                 } else if (sud === false) {
-                    tile.innerHTML = "."
                     tile.classList = "tileDiv";
                     posY = sudPosY
                     posX = sudPosX
                     sud = true
-                }  else {
+                } else {
                     posY = i + 1
                     posX = j + 1
+                    
                 }
                 tile.className = "sortiepointDeStart"
+                tile.style.backgroundImage = fleche[nbLvl]
             } else if (ligneDiv[j] === "E") {
                 tile.classList.add('sortieEst')
                 estPosY = i + 1
                 estPosX = j + 1
-                tile.style.backgroundImage = "url('./img/grassRight.png')"
+                tile.style.backgroundImage = fleche[2]
             } else if (ligneDiv[j] === "O") {
                 ouestPosY = i + 1
                 ouestPosX = j + 1
-                tile.style.backgroundImage = "url('./img/grassLeft.png')"
+                tile.style.backgroundImage = fleche[1]
                 tile.classList.add('sortieOuest')
             } else if (ligneDiv[j] === "N") {
                 nordPosY = i+1
                 nordPosX = j+1
-                tile.style.backgroundImage = "url('./img/grassUp.png')"
+                tile.style.backgroundImage = fleche[4]
                 tile.classList.add('sortieNord')
             } else if (ligneDiv[j] === "V") {
                 sudPosY = i +1
                 sudPosX = j +1
-                tile.style.backgroundImage = "url('./img/grassDown.png')"
+                tile.style.backgroundImage = fleche[3]
                 tile.classList.add('sortieSud')
+
             } else if (ligneDiv[j] === "G") {
                 // tile.classList.add('sortiepointDeStart')
             }
@@ -122,8 +124,7 @@ function game() {
 
 
 }
-let mapY;
-let mapX;
+
 
 function pointDeStart() {
     if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("sortieEst")) {
