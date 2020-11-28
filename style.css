@@ -11,7 +11,7 @@
     
 }
 .tile{
-    background-color: rgb(93, 168, 125);
+    
     display: flex;
     
 }
@@ -19,9 +19,13 @@
     width: 40px;
     height: 40px;
     background-color: rgb(93, 168, 125);
+    background-image: url("/img/grass.PNG");
+    background-size: cover;
 }
 .arbre{
     background-color: blue;
+    background-image: url("/img/wood.png");
+    background-size: cover;
 }
 .sortieOuest{
     background-color: rgb(125, 125, 173);
