@@ -1,18 +1,18 @@
 let lvl = [
-    lvl0 = `aaaaaaaaaaa
+    starter = `aaaaNaaaaaa
 a.a....a..a
-a...a.....p
+a...a.....E
 a....a....a
 a..a.....aa
 O....Sa...a
 a.a..aa..aa
 a..a....aaa
 a.........a
-aaaaaaaaaaa`,
+aaaVaaaaaaa`,
 
-    lvl1 = `aaaaaaaaaaa
+    est01 = `aaaaaaaaaaa
 aaaa...a..a
-O...a.aaaa.
+G...a.aaaa.
 a...aa....a
 S..a..aa.a.
 aaa...a....
@@ -21,7 +21,7 @@ aaa...a....
 a..aaaaa...
 ....a.....a`,
 
-lvl2 = `aaaaaaaaaaa
+    ouest01 = `aaaaaaaaaaa
 a.aa...a..a
 ..a.......a
 a....a....a
@@ -29,7 +29,26 @@ a....a....a
 aa....a...a
 a.a..aa..aa
 a..a....aaa
-..........a
+..........G
 a.aa.....aa`,
+    nord01 = `aaaaaaaaaaa
+a.a....a..a
+a...a......
+a....a....a
+a........aa
+........a.a
+a.........a
+a.a.......a
+a.........a
+aaaGaaaaSaa`,
+    sud01 = `aaaSaaaaGaa
+a..........
+a....a....a
+.a........a
+...a...a..a
+.....a.....
+.a.........
+a.......a..
+...a.......
+a....a.a...`,
 ]
- 
