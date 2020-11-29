@@ -1,10 +1,10 @@
 let lvl = [
     starter_0 = `aaaaNaaaaaa
 a.a....a..a
-a...a.....E
+a...a...S.E
 a....a....a
 a..a.....aa
-O..a.Sa...a
+O..a..a...a
 a.a..aa..aa
 a..a....aaa
 a........Ba
