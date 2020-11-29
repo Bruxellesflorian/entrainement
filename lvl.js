@@ -25,7 +25,7 @@ a..aaaaa...
 a.aaaaaa..a
 ..aT......a
 a....a....a
-...a..aa..S
+...a......S
 aa....a...a
 a.a..aa..aa
 a..a....aaa
