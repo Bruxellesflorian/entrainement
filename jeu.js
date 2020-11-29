@@ -312,11 +312,13 @@ function deplacement() {
 
 function piecePlus() {
     cptPiece++
-    balleLvl++
-    nbPiece.innerHTML = "Nombre de pieces = " + cptPiece
-    if (nbPiece === 4){
+    if (cptPiece == 4){
+        console.log("ok")
         alert("Vous avez gagné en ",minute,":",sec," .")
     }
+    balleLvl++
+    nbPiece.innerHTML = "Nombre de pieces = " + cptPiece
+    
 }
 
 
@@ -327,6 +329,7 @@ game()
 deplacement()
 let balleLvl = 0
 let botballe = setInterval(function () {
+    
     if (nbLvl <= balleLvl) {
         if (posY < posYBot) {
             posYBot--
@@ -358,6 +361,7 @@ let botballe = setInterval(function () {
         }
         document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
     }
+
 }, 200);
 let loose = setInterval(function () {
     if (posXBot == posX && posYBot == posY) {
