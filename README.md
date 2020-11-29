@@ -8,3 +8,5 @@
 * Vous gagnez si vous collectez 4 pieces
       BON CHANCE
 [Link](https://bruxellesflorian.github.io/entrainement/)
+
+[](https://raw.githubusercontent.com/Bruxellesflorian/entrainement/master/Capture.PNG)
