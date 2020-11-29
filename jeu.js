@@ -1,6 +1,6 @@
 const body = document.querySelector("body")
 body.classList.add("body")
-const fleche = ["", "url('./img/grassLeft.png')", "url('./img/grassRight.png')", "url('./img/grassDown.png')", "url('./img/grassUp.png')"]
+const fleche = ["", "url('./img/grassLeft.png')", "url('./img/grassRight.png')", "url('./img/grassDown.png')", "url('./img/grassUp.png')", "url('./img/piece.png')"]
 const fenetreDeJeu = document.createElement("div")
 fenetreDeJeu.classList.add("fenetreDeJeu")
 body.appendChild(fenetreDeJeu)
@@ -10,12 +10,21 @@ player.classList.add("player")
 
 const timerPlay = document.createElement("div")
 const timerDiv = document.createElement("div")
+const nbPiece = document.createElement("div")
+const pieceNV = document.createElement("div")
 timerDiv.classList.add("timer")
+
+let posYBot, posXBot;
+let nbLvl = 0
 
 const bot = document.createElement("div")
 bot.classList.add("bot")
-let posYBot, posXBot;
-let nbLvl = 0
+
+let pieceOuest = true
+let pieceNord = true
+let pieceEst = true
+let pieceSud = true
+
 let posY, posX;
 let ouestPosY, ouestPosX;
 let estPosY, estPosX
@@ -29,6 +38,7 @@ let ouest, est, nord, sud = true;
 
 let sec = 00
 let minute = 00
+let cptPiece = 0
 setInterval(() => {
     sec++
     timerPlay.innerHTML = minute + ":" + sec
@@ -86,11 +96,11 @@ function game() {
                     posX = j + 1
 
                 }
-                if(nbLvl > 0){
+                if (nbLvl > 0) {
                     tile.className = "sortiepointDeStart"
-                tile.style.backgroundImage = fleche[nbLvl]
+                    tile.style.backgroundImage = fleche[nbLvl]
                 }
-                
+
             } else if (ligneDiv[j] === "E") {
                 tile.classList.add('sortieEst')
                 estPosY = i + 1
@@ -106,6 +116,42 @@ function game() {
                 nordPosX = j + 1
                 tile.style.backgroundImage = fleche[4]
                 tile.classList.add('sortieNord')
+            }
+            if (nbLvl == 2) {
+                if (ligneDiv[j] === "T") {
+                    if (pieceOuest === true) {
+                        tile.classList.add("piece")
+
+                    }
+                }
+
+            }
+            if (nbLvl == 3) {
+                if (ligneDiv[j] === "T") {
+                    if (pieceNord === true) {
+                        tile.classList.add("piece")
+
+                    }
+                }
+
+            }
+            if (nbLvl == 3) {
+                if (ligneDiv[j] === "T") {
+                    if (pieceEst === true) {
+                        tile.classList.add("piece")
+
+                    }
+                }
+
+            }
+            if (nbLvl == 4) {
+                if (ligneDiv[j] === "T") {
+                    if (pieceSud === true) {
+                        tile.classList.add("piece")
+
+                    }
+                }
+            
             } else if (ligneDiv[j] === "V") {
                 sudPosY = i + 1
                 sudPosX = j + 1
@@ -221,46 +267,94 @@ function deplacement() {
             }
 
         }
+        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("piece")) {
+            if (nbLvl === 2) {
+                if (pieceOuest === true) {
+                    pieceOuest = false;
+                    console.log(pieceOuest);
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.remove("piece")
+                    piecePlus()
+
+                }
+            }
+            if (nbLvl === 3) {
+                if (pieceNord === true) {
+                    pieceNord = false;
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.remove("piece")
+
+                    piecePlus()
+
+                }
+            }
+            if (nbLvl === 1) {
+                if (pieceEst === true) {
+                    pieceEst = false;
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.remove("piece")
+
+                    piecePlus()
+
+                }
+            }
+            if (nbLvl === 4) {
+                if (pieceSud === true) {
+                    pieceSud = false;
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.remove("piece")
+
+                    piecePlus()
+
+                }
+            }
+        }
         document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").appendChild(player)
 
     })
 }
 
+function piecePlus() {
+    cptPiece++
+    balleLvl++
+    nbPiece.innerHTML = "Nombre de pieces = " + cptPiece
+}
+
+
 body.appendChild(timerDiv)
 timerDiv.appendChild(timerPlay)
+timerDiv.appendChild(nbPiece)
 game()
 deplacement()
-setInterval(function () {
-
-    if (posY < posYBot) {
-        posYBot--
-        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")) {
-            posYBot++
-            posXBot--
-            
-        }
-    } else if (posY > posYBot) {
-        posYBot++
-        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")){
+let balleLvl = 0
+let botballe = setInterval(function () {
+    if (nbLvl <= balleLvl) {
+        if (posY < posYBot) {
             posYBot--
-            posXBot++
-        }
+            if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")) {
+                posYBot++
+                posXBot--
 
-    } else if (posX < posXBot) {
-        posXBot--
-        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")){
-            posYBot--
-            posXBot++
-        }
-
-    } else if (posX > posXBot) {
-        posXBot++
-        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")){
+            }
+        } else if (posY > posYBot) {
             posYBot++
+            if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")) {
+                posYBot--
+                posXBot--
+            }
+
+        } else if (posX < posXBot) {
             posXBot--
+            if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")) {
+                posYBot--
+                posXBot++
+            }
+
+        } else if (posX > posXBot) {
+            posXBot++
+            if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")) {
+                posYBot++
+                posXBot--
+            }
         }
+        document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
     }
-    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
 }, 200);
 let loose = setInterval(function () {
     if (posXBot == posX && posYBot == posY) {

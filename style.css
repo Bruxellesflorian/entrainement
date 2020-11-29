@@ -67,3 +67,9 @@ html{
     border-radius: 100%;
     background-color: rgb(255, 251, 0);
 }
+.piece{
+    background-image: url(./img/piece.png);
+}
+.piece1{
+    background-image: url(./img/piece.png);
+}
