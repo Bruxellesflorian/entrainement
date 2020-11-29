@@ -1,6 +1,6 @@
 # Training
-# Ce weekEnd j'ai crée un petit jeu:
-Explication
+## Ce weekEnd j'ai crée un petit jeu:
+## Explication
 * Vous êtes sur une carte et vous pouvez vous déplacer avec les flèches de votre Clavier
 * Traversez la forêt et collecter les pièces
 * Cependant une boule jaune vous poursuit
