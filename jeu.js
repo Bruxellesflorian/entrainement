@@ -261,7 +261,7 @@ setInterval(function () {
         }
     }
     document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
-}, 500);
+}, 200);
 let loose = setInterval(function () {
     if (posXBot == posX && posYBot == posY) {
         alert('perdu !!')
