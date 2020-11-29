@@ -246,9 +246,9 @@ deplacement()
                 
             }, 1000);
            let loose = setInterval(function(){
-                if(posXBot == posX){
+                if(posXBot == posX && posYBot == posY){
                     alert('perdu !!')
                     window.location=""
                     clearInterval(loose)
                 }
-            },10)
+            },200)

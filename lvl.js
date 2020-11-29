@@ -15,7 +15,7 @@ aaaa...a..a
 a...a.aaaa.
 a...aa....a
 S.....aa.a.
-aaa...a....
+aaa..Ba....
 ..a..aa..a.
 ...aa.aaaaa
 a..aaaaa...
@@ -23,7 +23,7 @@ a..aaaaa...
 
     ouest01_2 = `aaaaaaaaaaa
 a.aaaaaa..a
-..a.......a
+..a.B.....a
 a....a....a
 ...a..aa..S
 aa....a...a
@@ -37,7 +37,7 @@ a...a......
 a....a....a
 a........aa
 ........a.a
-a.........a
+a.B.......a
 a.a.......a
 a.........a
 aaaGaaaaSaa`,
@@ -48,7 +48,7 @@ a....a....a
 ...a...a..a
 .....a.....
 .a.........
-a.......a..
+a...B...a..
 ...a.......
 a....a.a...`,
 ]
