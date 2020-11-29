@@ -314,7 +314,7 @@ function piecePlus() {
     cptPiece++
     if (cptPiece == 4){
         console.log("ok")
-        alert("Vous avez gagné en ",minute,":",sec," .")
+        alert("Vous avez gagné")
     }
     balleLvl++
     nbPiece.innerHTML = "Nombre de pieces = " + cptPiece
