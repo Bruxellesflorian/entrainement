@@ -86,8 +86,11 @@ function game() {
                     posX = j + 1
 
                 }
-                tile.className = "sortiepointDeStart"
+                if(nbLvl > 0){
+                    tile.className = "sortiepointDeStart"
                 tile.style.backgroundImage = fleche[nbLvl]
+                }
+                
             } else if (ligneDiv[j] === "E") {
                 tile.classList.add('sortieEst')
                 estPosY = i + 1
@@ -142,13 +145,13 @@ function pointDeStart() {
         nbLvl = 2
         game()
         ouest = false
-        
+
     } else if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("sortieNord")) {
         fenetreDeJeu.innerHTML = ""
         nbLvl = 3
         game()
         nord = false
-        
+
     } else if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("sortieSud")) {
         fenetreDeJeu.innerHTML = ""
         nbLvl = 4
@@ -158,16 +161,16 @@ function pointDeStart() {
         fenetreDeJeu.innerHTML = ""
         nbLvl = 0
         game()
-        
+
     }
 }
 
 function deplacement() {
     document.body.addEventListener("keydown", function (e) {
-        
+
         if (posX <= mapX) {
             if (e.key === "ArrowRight") {
-                
+
                 posX++
                 if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("arbre")) {
                     posX--
@@ -176,7 +179,7 @@ function deplacement() {
                     pointDeStart()
                 }
 
-                
+
             }
         }
 
@@ -207,7 +210,7 @@ function deplacement() {
         if (e.key === "ArrowDown") {
 
             if (posY < mapY - 1) {
-                
+
                 posY++
                 if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("arbre")) {
                     posY--
@@ -216,7 +219,7 @@ function deplacement() {
                     pointDeStart()
                 }
             }
-            
+
         }
         document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").appendChild(player)
 
@@ -227,28 +230,42 @@ body.appendChild(timerDiv)
 timerDiv.appendChild(timerPlay)
 game()
 deplacement()
-            setInterval(function () {
-             
-                if (posY < posYBot) {
-                    posYBot--
-                    console.log(posYBot);
-                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
-                } else if (posY > posYBot) {
-                    posYBot++
-                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
-                }
-                else if (posX < posXBot){
-                    posXBot--
-                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
-                }else if(posX > posXBot){
-                    posXBot++
-        document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)   }    
-                
-            }, 1000);
-           let loose = setInterval(function(){
-                if(posXBot == posX && posYBot == posY){
-                    alert('perdu !!')
-                    window.location=""
-                    clearInterval(loose)
-                }
-            },200)
+setInterval(function () {
+
+    if (posY < posYBot) {
+        posYBot--
+        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")) {
+            posYBot++
+            posXBot--
+            
+        }
+    } else if (posY > posYBot) {
+        posYBot++
+        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")){
+            posYBot--
+            posXBot++
+        }
+
+    } else if (posX < posXBot) {
+        posXBot--
+        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")){
+            posYBot--
+            posXBot++
+        }
+
+    } else if (posX > posXBot) {
+        posXBot++
+        if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").classList.contains("arbre")){
+            posYBot++
+            posXBot--
+        }
+    }
+    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
+}, 500);
+let loose = setInterval(function () {
+    if (posXBot == posX && posYBot == posY) {
+        alert('perdu !!')
+        window.location = ""
+        clearInterval(loose)
+    }
+}, 200)
