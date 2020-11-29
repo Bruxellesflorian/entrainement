@@ -4,20 +4,20 @@ a.a....a..a
 a...a.....E
 a....a....a
 a..a.....aa
-O....Sa...a
+O..a.Sa...a
 a.a..aa..aa
 a..a....aaa
 a........Ba
 aaaVaaaaaaa`,
 
-    est01 = `aaaaaaaaaaa
+    est01_1 = `aaaaaaaaaaa
 aaaa...a..a
 a...a.aaaa.
 a...aa....a
 S.....aa.a.
-aaa..Ta....
+a..........
 ..a..aa..a.
-...aa.aaaaa
+...a...Taaa
 a..aaaaa...
 ....a.....a`,
 

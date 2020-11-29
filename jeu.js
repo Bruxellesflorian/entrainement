@@ -135,7 +135,7 @@ function game() {
                 }
 
             }
-            if (nbLvl == 3) {
+            if (nbLvl == 1) {
                 if (ligneDiv[j] === "T") {
                     if (pieceEst === true) {
                         tile.classList.add("piece")
