@@ -1,6 +1,6 @@
 const body = document.querySelector("body")
 body.classList.add("body")
-const fleche = ["","url('./img/grassLeft.png')","url('./img/grassRight.png')","url('./img/grassDown.png')","url('./img/grassUp.png')"]
+const fleche = ["", "url('./img/grassLeft.png')", "url('./img/grassRight.png')", "url('./img/grassDown.png')", "url('./img/grassUp.png')"]
 const fenetreDeJeu = document.createElement("div")
 fenetreDeJeu.classList.add("fenetreDeJeu")
 body.appendChild(fenetreDeJeu)
@@ -12,18 +12,20 @@ const timerPlay = document.createElement("div")
 const timerDiv = document.createElement("div")
 timerDiv.classList.add("timer")
 
-
+const bot = document.createElement("div")
+bot.classList.add("bot")
+let posYBot, posXBot;
 let nbLvl = 0
-let posY,posX;
-let ouestPosY,ouestPosX;
-let estPosY,estPosX
-let nordPosY,nordPosX;
-let sudPosY, sudPosX 
+let posY, posX;
+let ouestPosY, ouestPosX;
+let estPosY, estPosX
+let nordPosY, nordPosX;
+let sudPosY, sudPosX
 
 let mapY;
 let mapX;
 
-let ouest,est,nord,sud = true;
+let ouest, est, nord, sud = true;
 
 let sec = 00
 let minute = 00
@@ -38,7 +40,7 @@ setInterval(() => {
 
 
 function game() {
-    
+
     const map = document.createElement("div")
     map.classList.add("map")
     fenetreDeJeu.appendChild(map)
@@ -54,9 +56,9 @@ function game() {
 
             let tile = document.createElement("div")
             ligne.appendChild(tile)
-            
+
             if (ligneDiv[j] === "a") {
-                
+
                 tile.classList.add("arbre")
             } else if (ligneDiv[j] === "S") {
                 if (ouest === false) {
@@ -69,7 +71,7 @@ function game() {
                     posY = estPosY
                     posX = estPosX
                     est = true
-                }else if (nord === false) {
+                } else if (nord === false) {
                     tile.classList = "tileDiv";
                     posY = nordPosY
                     posX = nordPosX
@@ -82,7 +84,7 @@ function game() {
                 } else {
                     posY = i + 1
                     posX = j + 1
-                    
+
                 }
                 tile.className = "sortiepointDeStart"
                 tile.style.backgroundImage = fleche[nbLvl]
@@ -97,18 +99,21 @@ function game() {
                 tile.style.backgroundImage = fleche[1]
                 tile.classList.add('sortieOuest')
             } else if (ligneDiv[j] === "N") {
-                nordPosY = i+1
-                nordPosX = j+1
+                nordPosY = i + 1
+                nordPosX = j + 1
                 tile.style.backgroundImage = fleche[4]
                 tile.classList.add('sortieNord')
             } else if (ligneDiv[j] === "V") {
-                sudPosY = i +1
-                sudPosX = j +1
+                sudPosY = i + 1
+                sudPosX = j + 1
                 tile.style.backgroundImage = fleche[3]
                 tile.classList.add('sortieSud')
 
             } else if (ligneDiv[j] === "G") {
                 // tile.classList.add('sortiepointDeStart')
+            } else if (ligneDiv[j] === "B") {
+                posYBot = i + 1
+                posXBot = j + 1
             }
             tile.classList.add("tileDiv")
 
@@ -121,8 +126,7 @@ function game() {
 
 
     document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").appendChild(player)
-
-
+    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
 }
 
 
@@ -138,13 +142,13 @@ function pointDeStart() {
         nbLvl = 2
         game()
         ouest = false
-
+        
     } else if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("sortieNord")) {
         fenetreDeJeu.innerHTML = ""
         nbLvl = 3
         game()
         nord = false
-
+        
     } else if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("sortieSud")) {
         fenetreDeJeu.innerHTML = ""
         nbLvl = 4
@@ -154,16 +158,16 @@ function pointDeStart() {
         fenetreDeJeu.innerHTML = ""
         nbLvl = 0
         game()
-
+        
     }
 }
 
 function deplacement() {
-    document.body.addEventListener("keydown", function(e) {
-       
+    document.body.addEventListener("keydown", function (e) {
+        
         if (posX <= mapX) {
             if (e.key === "ArrowRight") {
-
+                
                 posX++
                 if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("arbre")) {
                     posX--
@@ -172,7 +176,7 @@ function deplacement() {
                     pointDeStart()
                 }
 
-
+                
             }
         }
 
@@ -203,7 +207,7 @@ function deplacement() {
         if (e.key === "ArrowDown") {
 
             if (posY < mapY - 1) {
-
+                
                 posY++
                 if (document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").classList.contains("arbre")) {
                     posY--
@@ -212,13 +216,39 @@ function deplacement() {
                     pointDeStart()
                 }
             }
-
+            
         }
         document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posY + ") > div:nth-child(" + posX + ")").appendChild(player)
 
     })
 }
+
 body.appendChild(timerDiv)
 timerDiv.appendChild(timerPlay)
 game()
 deplacement()
+            setInterval(function () {
+             
+                if (posY < posYBot) {
+                    posYBot--
+                    console.log(posYBot);
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
+                } else if (posY > posYBot) {
+                    posYBot++
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
+                }
+                else if (posX < posXBot){
+                    posXBot--
+                    document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)
+                }else if(posX > posXBot){
+                    posXBot++
+        document.querySelector("body > div.fenetreDeJeu > div > div:nth-child(" + posYBot + ") > div:nth-child(" + posXBot + ")").appendChild(bot)   }    
+                
+            }, 1000);
+           let loose = setInterval(function(){
+                if(posXBot == posX){
+                    alert('perdu !!')
+                    window.location=""
+                    clearInterval(loose)
+                }
+            },10)

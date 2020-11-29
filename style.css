@@ -58,3 +58,12 @@ html{
     display: flex;
     justify-content: center;
 }
+.bot{
+    position: relative;
+    left: 7px;
+    top: 7px;
+    width: 25px;
+    height: 25px;
+    border-radius: 100%;
+    background-color: rgb(255, 251, 0);
+}

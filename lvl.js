@@ -7,7 +7,7 @@ a..a.....aa
 O....Sa...a
 a.a..aa..aa
 a..a....aaa
-a.........a
+a........Ba
 aaaVaaaaaaa`,
 
     est01 = `aaaaaaaaaaa
